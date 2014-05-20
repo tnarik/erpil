@@ -46,10 +46,22 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
-{
+App::error(function(Exception $exception, $code) {
 	Log::error($exception);
+
+	switch ($code) {
+       	case 500:
+            return Response::view("errors.500", array(), 500);
+    }
+
 });
+
+
+/* Added Error handling */
+App::missing(function($exception) {
+    return Response::view('errors.404', array(), 404);
+});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,8 +74,7 @@ App::error(function(Exception $exception, $code)
 |
 */
 
-App::down(function()
-{
+App::down(function() {
 	return Response::make("Be right back!", 503);
 });
 
