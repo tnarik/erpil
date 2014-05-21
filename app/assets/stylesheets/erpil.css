@@ -1,0 +1,33 @@
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: bold;
+  font-size: 39px;
+  margin-top: 10px;
+}
+
+.container-fluid {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.col-md-4 {
+	width: 370px;
+	margin-left: 30px;
+	padding-left: 0px;
+	padding-right: 0px;
+	position: static;
+}

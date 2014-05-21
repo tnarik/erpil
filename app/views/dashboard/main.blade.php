@@ -48,7 +48,7 @@
         <header style="text-align:center; margin-bottom:50px;">
             <h1> <a href="/"> { { $site->name } } </a> <a style="color:red; font-size:medium; margin-left:30px;" href="/home/logout">Cerrar sesión </a> </h1>
         </header>
-        <div class="row-fluid">
+        <div class="col-md-13">
             <div role="main" class="col-md-4">
                 <fieldset>
                     <legend>Estadisticas de acceso</legend>
