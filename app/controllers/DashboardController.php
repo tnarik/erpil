@@ -10,7 +10,7 @@ class DashboardController extends BaseController {
 	public function main()
 	{
         //if (Auth::check()) {
-        	return Response::view('dashboard/main');
+        	return Response::view('dashboards/main');
     	//}
 	}
 
