@@ -1,5 +1,5 @@
 body {
-    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 }
 
 h1,
@@ -14,9 +14,9 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-weight: bold;
-  font-size: 39px;
-  margin-top: 10px;
+	font-weight: bold;
+	font-size: 39px;
+	margin-top: 10px;
 }
 
 .container-fluid {
@@ -30,4 +30,39 @@ h6,
 	padding-left: 0px;
 	padding-right: 0px;
 	position: static;
+}
+
+
+/* User display */
+iframe[seamless]{
+	background-color: transparent;
+	border: 0px none transparent;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.profile_main{
+	border:1px solid lightblue;
+	margin:2px;
+	margin-bottom:15px;
+	height:64px;
+}
+
+.profile_name{
+	font-size:x-large;
+	padding-top:6px;
+}
+
+.profile_status{
+}
+
+.profile_img{
+	width:64px;
+	height:64px;
+	margin-right:10px;
+	float:left;
+}
+.profile_img > img {
+	width: 60px;
+	height: 60px;
 }

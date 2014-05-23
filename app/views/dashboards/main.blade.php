@@ -2,7 +2,6 @@
 
 @section('header')
 <script>
-
   function marcarLibro(){
     $.ajax({
       url: '/home/registro/2',
@@ -81,7 +80,7 @@
     <div role="main" class="col-md-4">
       <fieldset>
         <legend>Gestion de usuarios</legend>
-        <a href="/home/management">
+        <a href="{{ URL::action('customers.index') }}">
           <div class="well" style="text-align:right">
             <h1 style="float:left; padding-top:30px"> Gestionar </h1>
             <img style="text-align:right" src="assets/users/sinfoto.jpg" />
@@ -96,9 +95,6 @@
           Acceso al sistema de gestión de usuarios.
           Desde aquí podrá
         </p>
-        <br/>
-        <br/>
-        <br/>
         <br/>
         <br/>
         <br/>

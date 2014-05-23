@@ -22,3 +22,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 # Bootstrap 3.1.1 (21/05/2014)
+
+# If classes are refactored, remember to...
+`composer dump-autoload`

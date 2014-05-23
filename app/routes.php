@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', array('as' => 'home', 'uses' => 'DashboardController@main'));
+Route::get('/', array('as' => 'home', 'uses' => 'DashboardsController@main'));
+
+Route::get('cust', 'CustomersController@index');
+Route::get('cust/{username}', 'CustomersController@show');
+
+Route::resource('customers', 'CustomersController');
+
 
 //Route::get('users/{username}', ....);

@@ -1,6 +1,6 @@
 <?php
 
-class DashboardController extends BaseController {
+class DashboardsController extends \BaseController {
 
 	/**
 	 * Main dashboard.
@@ -10,7 +10,7 @@ class DashboardController extends BaseController {
 	public function main()
 	{
         //if (Auth::check()) {
-        	return Response::view('dashboards/main');
+        	return View::make('dashboards/main');
     	//}
 	}
 
