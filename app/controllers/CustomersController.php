@@ -10,7 +10,13 @@ class CustomersController extends \BaseController {
 	public function index()
 	{
 		if (Input::has('search')) {
-			$customers = Customer::where('name', 'like', '%'.Input::get('search').'%')->paginate(3);
+			if (Input::get('search') == "unverified") {
+				$customers = Customer::where('verified', '=', false)->paginate(3);
+			} elseif (Input::get('search') == "pending_payment") {
+				$customers = Customer::where('verified', '=', true)->whereNull('payment_next_date')->orWhere('payment_next_date', '<', date('Y-m-d'))->paginate(3);
+			} else {
+				$customers = Customer::where('name', 'like', '%'.Input::get('search').'%')->paginate(3);
+			}
 		} else {
 			$customers = Customer::paginate(3);
 		}
@@ -19,7 +25,7 @@ class CustomersController extends \BaseController {
     //  $users = Paginator::make($data->items, $data->totalItems, 50);
 
 		//$users = Paginator::make($items, $totalItems, $perPage);
-    return View::make('customers/index')->withCustomers($customers);
+    return View::make('customers/index')->withCustomers($customers)->withUser('a');
 	}
 
 
@@ -31,7 +37,7 @@ class CustomersController extends \BaseController {
 	public function create()
 	{
 		$customer = new Customer;
-    return View::make('customers/create')->withCustomer($customer);
+    return View::make('customers/create')->withCustomer($customer)->withUser('a');
 	}
 
 
@@ -69,7 +75,7 @@ class CustomersController extends \BaseController {
 	public function edit($id)
 	{
 		$customer = Customer::find($id);
-    	return View::make('customers/edit')->with('customer', $customer);
+    	return View::make('customers/edit')->withCustomer($customer)->withUser('a');
  	}
 
 

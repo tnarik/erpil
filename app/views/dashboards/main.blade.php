@@ -4,33 +4,30 @@
 <script>
   function marcarLibro(){
     $.ajax({
-      url: '/home/registro/2',
+      url: '{{ URL::to('events') }}',
       type:'POST',
       data:{
-        'id' : prompt('Ponga la tarjeta en el lector'),
-        'extra' : prompt("Introduzca la referencia del libro: ")
+        'where' : 'libro',
+        'card_id' : prompt('Ponga la tarjeta en el lector'),
+        'comment' : prompt("Introduzca la referencia del libro: ")
+      },
+      success:function(response){
+        alert("listo");
+      },
+      error:function(){
+        alert('esta tarjeta no esta registrada');
       }
     });
   }
 
   function marcarTaller(){
     $.ajax({
-      url: '/home/registro/1',
+      url: '{{ URL::to('events') }}',
       type:'POST',
       data:{
-        'id' : prompt('Ponga la tarjeta en el lector'),
-        'extra' : prompt("Introduzca un comentario al respecto: ")
-      }
-    });
-  }
-
-  function marcarGenerico(){
-    $.ajax({
-      url: '/home/registro/3',
-      type:'POST',
-      data:{
-        'id' : prompt('Ponga la tarjeta en el lector'),
-        'extra' : prompt("Introduzca un comentario al respecto: ")
+        'where' : 'taller',
+        'card_id' : prompt('Ponga la tarjeta en el lector'),
+        'comment' : prompt("Introduzca un comentario al respecto: ")
       }
     });
   }
@@ -125,7 +122,7 @@
     <div role="main" class="col-md-4">
       <fieldset>
         <legend>Marcar prestamo/devolucion de libro</legend>
-        <a href="#" onclick="marcarLibro(); return false">
+        <a href="" onclick="marcarLibro(); return false">
           <div class="well" style="text-align:right">
             <h1 style="float:left; padding-top:30px"> Libro </h1>
             <img style="text-align:right" src="assets/users/sinfoto.jpg" />

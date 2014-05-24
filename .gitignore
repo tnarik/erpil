@@ -7,3 +7,7 @@ composer.phar
 Thumbs.db
 
 node_modules
+
+#temporal
+app/database/*.sqlite
+

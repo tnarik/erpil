@@ -12,22 +12,19 @@
   <div class="col-md-4">
     <form action="{{ URL::action('customers.update', array($customer->id)) }}" method="POST" class="form-horizontal">
       <input type="hidden" name="_method" value="PUT"/>
-      @include('customers/partial/customer_form')->withCustomer($customer);
+      @include('customers/partial/customer_form')->withCustomer($customer)->withUser($user);
     </form>
     <h2> Registros </h2>
     <div style="height:100px; overflow-y:scroll;">
       <?php
-      /*$logs = DB::table('access_log')->where('id_tarjeta', '=', $customer->id_tarjeta);
-      setlocale(LC_TIME, 'es_ES'); 
-      $logs_ = array(); 
-      foreach ($logs->get() as $log){
-        $logs_[] = $log;
-      }
-      foreach (array_reverse($logs_) as $log) {
-        $estado = Estado::find($log->status)->nombre;
-        echo "Registrado " . $estado . " ($log->extra_data) en " . gmstrftime('%H:%M:%S', strtotime($log->date) +7200 ) . "<br/>";
-      }
-*/
+        $logs = $customer->events;
+        foreach ($logs as $log) {
+          $tz = new DateTimeZone('Europe/Madrid');
+          $date = $log->created_at;
+          $date->setTimeZone($tz);
+          //$estado = CardEvent::find($log->status)->nombre;
+          echo "Registrado " . "en este sitio que viene del Estado ". " ($log->comment) en ". gmstrftime('%H:%M:%S', strtotime($date) ) . "<br/>";
+        }
       ?>
     </div>
   </div>

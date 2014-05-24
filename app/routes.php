@@ -13,10 +13,8 @@
 
 Route::get('/', array('as' => 'home', 'uses' => 'DashboardsController@main'));
 
-Route::get('cust', 'CustomersController@index');
-Route::get('cust/{username}', 'CustomersController@show');
-
 Route::resource('customers', 'CustomersController');
+Route::resource('events', 'CardEventsController', array('only' => array('store')));
 
 
 //Route::get('users/{username}', ....);

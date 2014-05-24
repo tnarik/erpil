@@ -17,15 +17,16 @@ class CreateTableCustomers extends Migration {
 			$table->increments('id');
 			$table->text('name');
 			$table->text('email')->nullable();
-			$table->integer('status')->nullable()->default(NULL);
-
+			$table->boolean('verified')->default(false);
 			$table->text('surname')->nullable();
 			$table->text('address')->nullable();
 			$table->text('phone')->nullable();
 			$table->text('comment')->nullable();
-			$table->text('payment')->nullable();
 			$table->text('customer_id')->nullable();
 			$table->text('card_id')->nullable();
+
+            $table->date('payment_next_date')->nullable();
+			$table->text('payment_method')->nullable();
 
 			$table->timestamps();
 		});
@@ -44,9 +45,6 @@ class CreateTableCustomers extends Migration {
 }
 
 #CREATE TABLE `members` (
-#  `fechaPagado` date DEFAULT NULL,
-#  `fechaPago` date DEFAULT NULL,
-#
 #  `has_parking` int(11) DEFAULT NULL,
 #  `flagDisabled` text,
 #  PRIMARY KEY (`id`)
