@@ -37,14 +37,6 @@
 
 
 @section('content')
-<div class="container-fluid" style="margin-left:0px; margin-right:0px">
-  <header style="text-align:center; margin-bottom:50px;">
-    @if(isset($site))
-      <h1> <a href="/"> {{ $site->name }} </a> <a style="color:red; font-size:medium; margin-left:30px;" href="/home/logout">Cerrar sesión </a> </h1>
-    @else 
-      <h1>a new site should be created here</h1>
-    @endif
-  </header>
   <div class="col-md-13">
     <div role="main" class="col-md-4">
       <fieldset>
@@ -60,7 +52,7 @@
     <div role="main" class="col-md-4">
       <fieldset>
         <legend>Apertura remota de puerta</legend>
-        <a href="/home/opendoor" onclick="if(!confirm('¿Está seguro de que quiere abrir la puerta?')){ return false; }" >
+        <a href="{{ URL::route('door') }}" onclick="if(!confirm('¿Está seguro de que quiere abrir la puerta?')){ return false; }" >
           <div class="well" style="text-align:right">
             <h1 style="float:left; padding-top:30px"> Abrir  </h1>
             <img style="text-align:right" src="assets/unlock.png" />
@@ -141,5 +133,4 @@
     </div>
 
   </div>
-</div>
 @stop

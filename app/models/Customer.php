@@ -9,4 +9,16 @@ class Customer extends Eloquent {
 	{
 		return $this->hasMany('CardEvent', 'card_id', 'card_id');
 	}
+
+
+	public static function boot()
+    {
+        parent::boot();
+ 
+        static::deleting(function($customer)
+        {
+        	$customer->events()->delete();
+        });
+ 
+    }
 }

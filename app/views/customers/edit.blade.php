@@ -1,14 +1,6 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container">
-  <header style="text-align:center; margin-bottom:50px;">
-    @if(isset($site))
-    <h1> <a href="/"> {{ $site->name }} </a></h1>
-    @else 
-    <h1>a new site should be created here</h1>
-    @endif
-  </header>
   <div class="col-md-4">
     <form action="{{ URL::action('customers.update', array($customer->id)) }}" method="POST" class="form-horizontal">
       <input type="hidden" name="_method" value="PUT"/>
@@ -39,4 +31,4 @@
     </p>
     @endif
 
-    @stop
+@stop

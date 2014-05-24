@@ -18,14 +18,6 @@
 
 
 @section('content')
-<div class="container">
-  <header style="text-align:center; margin-bottom:50px;">
-    @if(isset($site))
-      <h1> <a href="/"> {{ $site->name }} </a></h1>
-    @else 
-      <h1>a new site should be created here</h1>
-    @endif
-  </header>
   <div class="col-md-6">
     <form class="form form-inline" action="{{ URL::action('customers.index') }}" method="GET">
       <input type="text" class="input input-large" name="search" />
@@ -81,5 +73,4 @@
     DAMN IFRAMES!!!
     <!--iframe width=100% height=500 seamless src="/home/stats/false/false"></iframe-->
   </div>
-</div>
 @stop

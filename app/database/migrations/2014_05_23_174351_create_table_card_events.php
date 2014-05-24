@@ -18,6 +18,8 @@ class CreateTableCardEvents extends Migration {
 			$table->integer('card_id');
 			$table->text('comment');
 			$table->timestamps();
+			
+			$table->softDeletes();
 		});
 	}
 

@@ -27,4 +27,13 @@ class DashboardsController extends \BaseController {
         return Redirect::route('home');
 	}
 
+	public function displayLog()
+	{
+		if (is_readable('/tmp/simpledod.log')) {
+			return "<pre>".file_get_contents('/tmp/simpledod.log')."</pre>";
+		} else {
+			return "no luck, cowboy";
+		}
+	}
+
 }

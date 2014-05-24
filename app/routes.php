@@ -12,6 +12,8 @@
 */
 
 Route::get('/', array('as' => 'home', 'uses' => 'DashboardsController@main'));
+Route::get('/door', array('as' => 'door', 'uses' => 'DashboardsController@openDoor'));
+Route::get('/log', 'DashboardsController@displayLog');
 
 Route::resource('customers', 'CustomersController');
 Route::resource('events', 'CardEventsController', array('only' => array('store')));
