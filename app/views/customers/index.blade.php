@@ -20,20 +20,21 @@
 @section('content')
   <div class="col-md-6">
     <form class="form form-inline" action="{{ URL::action('customers.index') }}" method="GET">
-      <input type="text" class="input input-large" name="search" />
+      <input type="text" class="input input-large" value="{{ $search }}" name="search" />
+      <input type="hidden" value="{{ $filter }}" name="filter" />
       <button class="btn btn-primary btn-medium"> Buscar </button>
       <br/>
     </form>
     <button class="btn btn-large btn-success" style="width:85%;background:dodgerblue" onclick="document.location.href='{{ URL::to('customers/create') }}'">Nuevo</button>
     <br/>
     <button class="btn btn-large btn-success" onclick="location.href='/customers';">Todos</button>
-    <button class="btn btn-large btn-warning" onclick="location.href='/customers?search=unverified';">P. validar</button>
-    <button class="btn btn-large btn-danger" onclick="location.href='/customers?search=pending_payment';">P. pago</button>
-    <button class="btn btn-large btn-success" onclick="location.href='/customers?search=aa3';">P. devolucion libro</button> 
+    <button class="btn btn-large btn-warning" onclick="location.href='/customers?filter=unverified';">P. validar</button>
+    <button class="btn btn-large btn-danger" onclick="location.href='/customers?filter=pending_payment';">P. pago</button>
+    <button class="btn btn-large btn-success" onclick="location.href='/customers?filter=pending_books';">P. devolucion libro</button> 
     <br/>
 
     @if(isset($customers))
-      {{ $customers->appends(array('search' => Input::get('search')))->links() }}
+      {{ $customers->appends(array('search' => Input::get('search'), 'filter' => Input::get('filter')))->links() }}
       @foreach ($customers as $customer)
       <?php
         $log = $customer->events->last();
@@ -66,7 +67,7 @@
           </div>
         </a>
       @endforeach
-      {{ $customers->appends(array('search' => Input::get('search')))->links() }}
+      {{ $customers->appends(array('search' => Input::get('search'), 'filter' => Input::get('filter')))->links() }}
     @endif
   </div>
   <div class="col-md-6">
