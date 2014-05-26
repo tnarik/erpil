@@ -9,9 +9,11 @@ class DashboardsController extends \BaseController {
 	 */
 	public function main()
 	{
-        //if (Auth::check()) {
-        	return View::make('dashboards/main');
-    	//}
+		if (Auth::check()) {
+        	return View::make('dashboards/main'); //for the first site!
+    	} else {
+			return Redirect::route('login');
+    	}
 	}
 
 	/**

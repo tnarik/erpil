@@ -22,15 +22,15 @@
     <form class="form form-inline" action="{{ URL::action('customers.index') }}" method="GET">
       <input type="text" class="input input-large" value="{{ $search }}" name="search" />
       <input type="hidden" value="{{ $filter }}" name="filter" />
-      <button class="btn btn-primary btn-medium"> Buscar </button>
+      <button class="btn btn-primary"> Buscar </button>
       <br/>
     </form>
-    <button class="btn btn-large btn-success" style="width:85%;background:dodgerblue" onclick="document.location.href='{{ URL::to('customers/create') }}'">Nuevo</button>
+    <button class="btn btn-lg btn-success" style="width:85%;background:dodgerblue" onclick="document.location.href='{{ URL::to('customers/create') }}'">Nuevo</button>
     <br/>
-    <button class="btn btn-large btn-success" onclick="location.href='/customers';">Todos</button>
-    <button class="btn btn-large btn-warning" onclick="location.href='/customers?filter=unverified';">P. validar</button>
-    <button class="btn btn-large btn-danger" onclick="location.href='/customers?filter=pending_payment';">P. pago</button>
-    <button class="btn btn-large btn-success" onclick="location.href='/customers?filter=pending_books';">P. devolucion libro</button> 
+    <button class="btn btn-lg btn-success" onclick="location.href='/customers';">Todos</button>
+    <button class="btn btn-lg btn-warning" onclick="location.href='/customers?filter=unverified';">P. validar</button>
+    <button class="btn btn-lg btn-danger" onclick="location.href='/customers?filter=pending_payment';">P. pago</button>
+    <button class="btn btn-lg btn-success" onclick="location.href='/customers?filter=pending_books';">P. devolucion libro</button> 
     <br/>
 
     @if(isset($customers))

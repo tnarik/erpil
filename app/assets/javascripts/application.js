@@ -11,4 +11,5 @@
 // The available directives right now are require, require_directory, and require_tree
 //
 //= require jquery
+//= require_tree ../bootstrap
 //= require_tree .

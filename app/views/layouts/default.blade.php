@@ -12,13 +12,16 @@
 <body>
 	<div class="container-fluid" style="margin-left:0px; margin-right:0px">
 		<header style="text-align:center; margin-bottom:50px;">
-			@if(isset($site))
-			<h1> <a href="/"> {{ $site->name }} </a> <a style="color:red; font-size:medium; margin-left:30px;" href="/home/logout">Cerrar sesión </a> </h1>
-			@else 
-			<h1><a href="/">a new site should be created here</a></h1>
-			@endif
-		</header>
-		@yield('content')
-	</div>
-</body>
-</html>
+			<h1> 
+				@if(isset($site))
+					<a href="/"> {{ $site->name }} </a>
+				@else 
+					<a href="/">a new site should be created here</a>
+				@endif
+				<a style="color:red; font-size:medium; margin-left:30px;" href="{{ URL::route('logout') }}">Cerrar sesión </a>
+				</h1>
+			</header>
+			@yield('content')
+		</div>
+	</body>
+	</html>

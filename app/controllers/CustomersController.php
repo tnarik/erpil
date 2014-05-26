@@ -3,6 +3,15 @@
 class CustomersController extends \BaseController {
 
 	/**
+     * Instantiate a new CustomersController instance.
+     */
+    public function __construct()
+    {
+        $this->beforeFilter('auth');
+    }
+
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
