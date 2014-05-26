@@ -24,15 +24,20 @@ class Customer extends Eloquent {
     {
     	switch ($filter) {
     		case "unverified":
-  				return Customer::where('verified', '=', false);
+  				return Customer::whereVerified(false);
   				break;
   			case "pending_payment":
-				return Customer::where('verified', '=', true)
+				return Customer::whereVerified(true)
 					->whereNull('payment_next_date')
 					->orWhere('payment_next_date', '<', date('Y-m-d'));
 				break;
 			case "pending_books":
 				//check if the number of book events is pair! come on! that's silly
+				$cardEvents = CardEvent::whereFacilityId(Facility::whereCode('LIBRARY')->first()->id)
+					->groupBy('card_id')->havingRaw("(events_number % 2) != 0")
+					->get(array('card_id', DB::raw('count(*) as events_number')));
+				$card_ids = array_pluck($cardEvents, 'card_id');
+				return Customer::whereIn('card_id', $card_ids);
 			  	break;
 			default:
 				return Customer::query();
@@ -45,9 +50,11 @@ class Customer extends Eloquent {
     	$query = Customer::filter($filter);
  
     	if ( $search ) {
-			$query = $query->where('name', 'like', "%{$search}%");
+			$query = $query->where('name', 'like', "%{$search}%")->orWhere('surname', 'like', "%{$search}%");
 		}
 
 		return $query->paginate($perPage);
     }
 }
+
+//->select(DB::raw('count(*) as user_count, status'))

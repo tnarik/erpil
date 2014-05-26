@@ -9,7 +9,9 @@ class CardEventsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$card_event = CardEvent::create(Input::all());
+		$facility = Facility::whereCode(Input::get('facility'))->first();
+		$card_event = new CardEvent(Input::all());
+		$card_event->facility()->associate($facility);
 		$card_event->save();
 	}
 

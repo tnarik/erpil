@@ -16,6 +16,7 @@ class CreateTableCardEvents extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('card_id');
+			$table->integer('facility_id');
 			$table->text('comment');
 			$table->timestamps();
 			
