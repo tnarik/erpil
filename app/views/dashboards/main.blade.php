@@ -37,7 +37,6 @@
 
 
 @section('content')
-{{ CardEvent::all(); }}
 <div class="col-md-13">
   <div role="main" class="col-md-4">
     <fieldset>
@@ -59,7 +58,7 @@
     <fieldset>
       <legend>Estadisticas de acceso</legend>
       <div class="well">
-        <a href="/home/stats/">
+        <a href="{{ URL::route('stats') }}">
           {{ image_tag('stats.png', array( 'class' => 'img-responsive' )  ) }}
         </a>
       </div>

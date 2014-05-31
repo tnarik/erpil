@@ -33,6 +33,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadTasks('tasks');
 
   // Default task(s)
   grunt.registerTask('default', ['concurrent:test']);

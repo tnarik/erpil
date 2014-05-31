@@ -7,6 +7,9 @@
             <fieldset>
                 <legend>Inicio de sesión</legend>
 
+                @if(isset($first))
+                <div><span>This is the first login to the system. These credentials will be used to set the first user entry.</span></div>
+                @endif
                 <div class="form-group">
                     <label class="control-label" for="email">Correo electrónico</label>
                         <div class="input-group">

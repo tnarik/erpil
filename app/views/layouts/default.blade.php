@@ -18,7 +18,9 @@
 				@else 
 					<a href="/">a new site should be created here</a>
 				@endif
+				@if(isset($user))
 				<a style="color:red; font-size:medium; margin-left:30px;" href="{{ URL::route('logout') }}">Cerrar sesión </a>
+				@endif
 				</h1>
 			</header>
 			@yield('content')

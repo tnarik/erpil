@@ -11,7 +11,7 @@ class SessionsController extends \BaseController {
 	{
 		if (Auth::check()) return Redirect::route('home');
 
-		return View::make('sessions/create');
+		return View::make('sessions/create')->withFirst( SessionsController::needInitialization()? true : null);
 	}
 
 	/**
@@ -21,9 +21,9 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		if ( User::count() == 2 ) {
-			$user = User::create(array('name' => 'lalo', 'email' => 'a@aa.com', 'password' => Hash::make('capicola')));
-			return $user;
+		if ( SessionsController::needInitialization() ) {
+			// System should be initialized
+			$user = User::create(array('name' => 'default_name', 'email' => Input::get('email'), 'password' => Hash::make(Input::get('password'))));
 		}
 		if (Auth::attempt(Input::only('email', 'password'))) {
 		    return Redirect::intended(URL::route('home'));
@@ -42,7 +42,12 @@ class SessionsController extends \BaseController {
 	{   
 		Auth::logout();
 
-		return Redirect::route('sessions.create');
+		return Redirect::route('login');
+	}
+
+	public function needInitialization()
+	{
+		return (User::count() == 0);
 	}
 
 }
