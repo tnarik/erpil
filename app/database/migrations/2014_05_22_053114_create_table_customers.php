@@ -32,7 +32,6 @@ class CreateTableCustomers extends Migration {
 			$table->text('payment_method')->nullable();
 
 			$table->boolean('has_parking')->default(false);
-			$table->boolean('flag_disabled')->default(false);
 
 			$table->timestamps();
 		});

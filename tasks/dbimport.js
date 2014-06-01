@@ -6,14 +6,17 @@ var natural = require('natural');
 var changeCase = require('change-case');
 
 function sqlEscape(stringToEscape){
-    return stringToEscape
+    if ( stringToEscape == null) return 'NULL';
+    if (typeof stringToEscape == 'number') return stringToEscape;
+
+    return "'"+stringToEscape
         .replace("\\", "\\\\")
         .replace("\'", "\\\'")
         .replace("\"", "\\\"")
         .replace("\n", "\\\n")
         .replace("\r", "\\\r")
         .replace("\x00", "\\\x00")
-        .replace("\x1a", "\\\x1a");
+        .replace("\x1a", "\\\x1a")+"'";
 }
 
 function create_seeder(db, seeder, mapping) {
@@ -23,6 +26,7 @@ function create_seeder(db, seeder, mapping) {
     stream.write( "<?php\n\n" );
     stream.write( "class ImportTableSeeder extends Seeder { \n\n");
     stream.write( "    public function run() {\n" );
+    stream.write( "        Eloquent::unguard();\n\n" );
 
     nounInflector = new natural.NounInflector();
 
@@ -41,29 +45,41 @@ function create_seeder(db, seeder, mapping) {
                 table_name = table_mapping;
                 model_name = changeCase.pascalCase(nounInflector.singularize(table_name));
             }
-           // model_name = nounInflector.singularize(table_name);
         }
 
         stream.write( "        DB::table('"+table_name+"')->delete();\n");
+
         for (entry_index in db[table_index]) {
             table_entry = db[table_index][entry_index];
             if ( table_mapping && table_mapping['fields'] ) {
                 var table_entry_values_migration = "";
                 table_entry_values =[];
+
                 for (field in table_mapping['fields'] ) {
-                    table_entry_values[field] = table_entry[table_mapping['fields'][field]];
-                    //console.log(field+" from "+table_mapping['fields'][field]+" as "+table_entry[table_mapping['fields'][field]]);
-                    //table_entry_values_migration = "'name' => '"+table_entry[1]+"', 'card_id' => '234'";
+                    table_field = table_mapping['fields'][field];
+                    if ( (typeof table_field == 'object') ) {
+                        if ( table_field['translate'] && (table_field['translate'][table_entry[table_field['order']]] != undefined) ) {
+                            table_entry_values[field] = table_field['translate'][table_entry[table_field['order']]];
+                        } else {
+                            table_entry_values[field] = table_entry[table_field['order']];
+                        }
+                    } else {
+                        table_entry_values[field] = table_entry[table_field];
+                    }
                 }
+
                 for (table_entry_values_index in table_entry_values) {
                     table_entry_values_migration += ( table_entry_values_migration.length == 0 ) ? "" : ", ";
-                    table_entry_values_migration += "'"+sqlEscape(table_entry_values_index)+"' => '"+sqlEscape(table_entry_values[table_entry_values_index])+"'";
-                }
-                stream.write( "        "+model_name+"::create(array("+table_entry_values_migration+"));\n");
-            } else {
-                // insertion without mapping
-                stream.write( "        "+model_name+"::create(array('test' => 'test'));\n");
 
+                    field_value = sqlEscape(table_entry_values[table_entry_values_index]);
+
+                    table_entry_values_migration += sqlEscape(table_entry_values_index)+" => "+field_value;
+                }
+
+                stream.write( "        "+model_name+"::create(array("+table_entry_values_migration+"));\n");
+
+            } else {
+                // insertion without mapping (not supported yet)
             }
         }
     }
@@ -131,6 +147,7 @@ module.exports = function(grunt) {
                                 while(data = parserValues.read()){
                                     //console.log(table_name+" "+data.length+" : "+data[1]);
                                     normalized_data = data.map(Function.prototype.call, String.prototype.trim);
+                                    normalized_data = normalized_data.map(function(value) { return (value == 'NULL') ? null: value;});
                                     db[table_name].push(normalized_data);
                                 }
                             });
@@ -172,16 +189,25 @@ module.exports = function(grunt) {
         
         streamsqlfile.on('end', function (){
             create_seeder(db, seeder,
-                 {  'access_log': 'card_events',
+                 {  'access_log': { 'name': 'card_events',
+                        'fields': { 'card_id': 0, 'facility_id': { 'order': 1,
+                                'translate': { 1: 2, 2: 3} },
+                            'created_at': 2, 'updated_at': 2, 'comment': 3 } },
                     'members' : { 'name': 'customers',
-                        'model' : 'Customer',
-                        'fields': { 'name': 1, 'email': 2, 'verified': 0, 'card_id': 4,
+                        'fields': { 'name': { 'order': 1,
+                                'translate': { null: '' } },
+                            'email': 2, 'verified': 0, 'card_id': 4,
                             'created_at': 5, 'updated_at': 6, 'phone': 7, 'address': 8,
                             'national_id': 9, 'surname': 10, 'payment_last_date': 11,
                             'payment_next_date': 12, 'comment': 13, 'payment_method': 14,
-                            'customer_id': 15, 'has_parking': 16, 'flag_disabled': 17 } },
-                    'sites' : true,
-                    'users' : true});
+                            'customer_id': 15, 
+                            'has_parking': { 'order': 16,
+                                'translate': { null: 0 } } } },
+                    'sites' : {
+                        'fields': { 'name': 1, 'user_id': 0 } },
+                    'users' : {
+                        'fields': { 'id': 0, 'name': 1, 'email': 2,
+                            'password': 3} } });
             console.log('finished all this processing');
         });
 

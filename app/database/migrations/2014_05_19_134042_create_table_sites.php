@@ -17,7 +17,6 @@ class CreateTableSites extends Migration {
 			$table->increments('id');
 			$table->text('name');
 			$table->integer('user_id');
-			$table->integer('status')->nullable()->default(NULL);
 			$table->timestamps();
 		});
 	}
