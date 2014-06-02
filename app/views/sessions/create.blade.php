@@ -6,7 +6,7 @@
         <form action="{{ URL::route('sessions.store') }}" method="POST" class="form-horizontal">
             <fieldset>
                 <legend>Inicio de sesión</legend>
-
+                
                 @if(isset($first))
                 <div><span>This is the first login to the system. These credentials will be used to set the first user entry.</span></div>
                 @endif
@@ -14,7 +14,7 @@
                     <label class="control-label" for="email">Correo electrónico</label>
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"/></span></span>
-                            <input name="email" type="email" placeholder="lacicleria@lacicleria.com" class="form-control" />
+                            <input name="email" type="email" placeholder="lacicleria@lacicleria.com" value="{{ Input::old('email') }}" class="form-control" />
                         </div>
                 </div>
 

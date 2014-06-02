@@ -48,8 +48,3 @@ class CreateTableCustomers extends Migration {
 	}
 
 }
-
-#CREATE TABLE `members` (
-#  `has_parking` int(11) DEFAULT NULL,
-#  `flagDisabled` text,
-#  PRIMARY KEY (`id`)

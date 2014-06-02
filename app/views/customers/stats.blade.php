@@ -4,12 +4,17 @@
 <script src="html5-canvas-bar-graph.js"></script>
 @stop
 
-
-
 @section('content')
-@foreach( array ( 'LIBRARY', 'WSHOP' , 'PARKING') as $elem )
+<div class="col-md-10">
+  <ul class="nav nav-justified nav-tabs">
+    <li><a href="{{ URL::action('customers.edit', array($customer->id)) }}">Datos del usuario</a></li>
+    <li class="active"><a href="">Estadísticas</a></li>
+  </ul>
+
+
+  @foreach( array ( 'LIBRARY', 'WSHOP' , 'PARKING') as $elem )
   <div class="container">
-  <h2 style="text-transform:uppercase">{{ Facility::whereCode($elem)->first()->name }}</h2>
+    <h2 style="text-transform:uppercase">{{ Facility::whereCode($elem)->first()->name }}</h2>
     <div class="col-md-6">
       <h3> Estadisticas por dia </h3>
       <canvas id="days_{{ $elem }}"></canvas>
@@ -38,5 +43,6 @@
     graph.xAxisLabelArr = [<?php echo implode(',', array_keys($stats[$elem]['hours'])); ?>];
     graph.update([<?php echo implode(',', $stats[$elem]['hours']); ?>]);
   </script>
-@endforeach
+  @endforeach
+</div>
 @stop

@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
     shell: {
       startApp: {
-        command: 'php artisan serve'
+        command: 'php artisan serve --host 0.0.0.0'
       }
 
     }

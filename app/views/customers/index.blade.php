@@ -18,20 +18,21 @@
 
 
 @section('content')
-  <div class="col-md-6">
+  <div class="col-md-12">
+    <button class="btn btn-lg btn-success" style="margin-bottom: 30px; width:85%;background:dodgerblue" onclick="document.location.href='{{ URL::to('customers/create') }}'">Crear nuevo socio</button>
+
     <form class="form form-inline" action="{{ URL::action('customers.index') }}" method="GET">
       <input type="text" class="input input-large" value="{{ $search }}" name="search" />
       <input type="hidden" value="{{ $filter }}" name="filter" />
       <button class="btn btn-primary"> Buscar </button>
       <br/>
     </form>
-    <button class="btn btn-lg btn-success" style="width:85%;background:dodgerblue" onclick="document.location.href='{{ URL::to('customers/create') }}'">Nuevo</button>
-    <br/>
-    <button class="btn btn-lg btn-success" onclick="location.href='/customers';">Todos</button>
-    <button class="btn btn-lg btn-warning" onclick="location.href='/customers?filter=unverified';">P. validar</button>
-    <button class="btn btn-lg btn-danger" onclick="location.href='/customers?filter=pending_payment';">P. pago</button>
-    <button class="btn btn-lg btn-success" onclick="location.href='/customers?filter=pending_books';">P. devolucion libro</button> 
-    <br/>
+    <ul class="nav nav-justified nav-tabs" style="padding-top: 50px;">
+      <li class="{{ ($filter == '') ? 'active' : '' }}"><a href="/customers">Todos</a></li>
+      <li class="{{ ($filter == 'unverified') ? 'active' : '' }}"><a href="/customers?filter=unverified">Pendiente de validar</a></li>
+      <li class="{{ ($filter == 'pending_payment') ? 'active' : '' }}"><a href="/customers?filter=pending_payment">Pendiente de pago</a></li>
+      <li class="{{ ($filter == 'pending_books') ? 'active' : '' }}"><a href="/customers?filter=pending_books">Pendiente de devolución de libro</a></li>
+    </ul>
 
     @if(isset($customers))
       {{ $customers->appends(array('search' => Input::get('search'), 'filter' => Input::get('filter')))->links() }}
@@ -69,9 +70,5 @@
       @endforeach
       {{ $customers->appends(array('search' => Input::get('search'), 'filter' => Input::get('filter')))->links() }}
     @endif
-  </div>
-  <div class="col-md-6">
-    DAMN IFRAMES!!!
-    <!--iframe width=100% height=500 seamless src="/home/stats/false/false"></iframe-->
   </div>
 @stop

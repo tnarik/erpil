@@ -23,6 +23,8 @@ Route::get('/logout', array('as' => 'logout', 'uses' => 'SessionsController@dest
 
 
 Route::resource('customers', 'CustomersController');
+Route::get('/customers/{id}/stats', array('as' => 'customers.stats', 'uses' => 'CustomersController@stats'));
+
 Route::resource('events', 'CardEventsController', array('only' => array('store')));
 
 

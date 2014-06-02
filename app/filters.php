@@ -14,6 +14,14 @@
 App::before(function($request)
 {
 	//
+
+	$current_user = Auth::user();
+	View::share('current_user', $current_user );
+	if ( isset($current_user) && $current_user->site) {
+		View::share('current_site', $current_user->site );
+	} else {
+		View::share('current_site', Site::first() );
+	}
 });
 
 

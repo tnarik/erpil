@@ -24,11 +24,6 @@ class DashboardsController extends \BaseController {
 	public function stats()
 	{
 		// are stats global or for an ID?
-
-		// get the logs
-
-		// generate the view, in the old version 'home.stats'
-		
 		$card_events = DB::table('card_events')->get();
 		$stats = [];
 		$hours = array_fill_keys(array("00",  "01",  "02",  "03",  "04",  "05",
