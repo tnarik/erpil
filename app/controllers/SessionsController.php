@@ -26,10 +26,10 @@ class SessionsController extends \BaseController {
 			$user = User::create(array('name' => 'default_name', 'email' => Input::get('email'), 'password' => Hash::make(Input::get('password'))));
 		}
 		if (Auth::attempt(Input::only('email', 'password'))) {
-			Session::flash('flash_message', array( 'success' => 'bienvenido'));
+			Session::flash('flash_message', array( 'success' => 'Bienvenido!!'));
 		    return Redirect::intended(URL::route('home'));  //with('flash_message', 'something')
 		} else {
-			Session::flash('flash_message', array( 'danger' => 'uh oh!'));
+			Session::flash('flash_message', array( 'danger' => 'uh oh! Intentalo otra vez, por favor.'));
 			return Redirect::back()->withInput();
 		}
 	}

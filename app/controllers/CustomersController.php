@@ -19,9 +19,8 @@ class CustomersController extends \BaseController {
 	public function index()
 	{
 		$customers = Customer::searchAndPaginate(Input::get('search'), Input::get('filter'), 15);
-		//$customers = Customer::searchAndPaginate(Input::get('search'), 3);
-        return View::make('customers/index')->withCustomers($customers)
-        	->withSearch(Input::get('search'))->withFilter(Input::get('filter'));
+	   	return View::make('customers/index')->withCustomers($customers)->withDebug(Input::get('filter'))
+     		->withFilter(Input::get('filter'))->withSearch(Input::get('search'));
 	}
 
 
@@ -46,6 +45,8 @@ class CustomersController extends \BaseController {
 	{
 		$customer = Customer::create( array( 'name' => Input::get('name'), 'surname' => Input::get('surname') ));
 		$customer->save();
+
+		Session::flash('flash_message', array( 'success' => 'Nuevo usuario creado'));
 		return Redirect::route('customers.index');
 	}
 
@@ -130,6 +131,8 @@ class CustomersController extends \BaseController {
 		$customer = Customer::find($id);
 		$customer->fill(Input::all());
 		$customer->save();
+
+		Session::flash('flash_message', array( 'success' => 'Datos de usuario actualizados'));
 		return Redirect::route('customers.index');
 	}
 

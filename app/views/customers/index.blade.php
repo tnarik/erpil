@@ -35,7 +35,7 @@
     </ul>
 
     @if(isset($customers))
-      {{ $customers->appends(array('search' => Input::get('search'), 'filter' => Input::get('filter')))->links() }}
+      {{ $customers->appends(array('search' => $search, 'filter' => $filter))->links() }}
       @foreach ($customers as $customer)
       <?php
         $log = $customer->events->last();
@@ -68,7 +68,7 @@
           </div>
         </a>
       @endforeach
-      {{ $customers->appends(array('search' => Input::get('search'), 'filter' => Input::get('filter')))->links() }}
+      {{ $customers->appends(array('search' => $search, 'filter' => $filter))->links() }}
     @endif
   </div>
 @stop

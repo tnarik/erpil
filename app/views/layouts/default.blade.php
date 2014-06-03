@@ -10,15 +10,15 @@
 	@yield('header')
 
 	<script>
-		$(document).ready(function() {
-			$('.alert').delay(5000).fadeOut(400);
+		$(function() {
+			$('.flash').delay(5000).fadeOut(400);
 		})
 	</script>
 </head>
 <body>
 	@if (Session::has('flash_message'))
 		@foreach (Session::get('flash_message') as $flash_type => $flash_message )
-    		<div class="alert alert-{{ $flash_type }}">
+    		<div class="flash alert alert-{{ $flash_type }}">
     			{{ $flash_message }}
     		</div>
     	@endforeach

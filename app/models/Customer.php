@@ -48,9 +48,11 @@ class Customer extends Eloquent {
     public static function searchAndPaginate($search, $filter = null, $perPage = null)
     {
     	$query = Customer::filter($filter);
- 
+
     	if ( $search ) {
-			$query = $query->where('name', 'like', "%{$search}%")->orWhere('surname', 'like', "%{$search}%");
+			$query = $query->where(function($query) use ($search) {
+                	$query->where('name', 'like', "%{$search}%")->orWhere('surname', 'like', "%{$search}%");
+                });
 		}
 
 		return $query->paginate($perPage);
