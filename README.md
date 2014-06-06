@@ -17,6 +17,8 @@ TBD
 # Notes
 - It uses Bootstrap 3.1.1 (21/05/2014)
 - If classes are refactored, remember to execute `composer dump-autoload`
+- Using rocketeer to deploy, accessible via `php artisan deploy:<xxx>`
+- Uses `.env.<xxx>.php` configuration files to store IPs, users and such.
 
 # Deployment (as manually executed in the test host machine)
 

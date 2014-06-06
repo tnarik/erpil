@@ -1,12 +1,13 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "tnarik/erpil",
+	"description": "ERPIL (based on the Laravel Framework).",
+	"keywords": ["erp"],
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
 		"codesleeve/asset-pipeline": "v2.0.3",
-		"doctrine/dbal": "v2.4.2"
+		"doctrine/dbal": "v2.4.2",
+		"anahkiasen/rocketeer": "1.2.2"
 	},
 	"autoload": {
 		"classmap": [

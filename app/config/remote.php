@@ -29,14 +29,22 @@ return array(
 	'connections' => array(
 
 		'production' => array(
-			'host'      => '',
-			'username'  => '',
-			'password'  => '',
+			'host'      => 'localhost',
+			'username'  => 'username',
+			'password'  => 'password',
 			'key'       => '',
 			'keyphrase' => '',
 			'root'      => '/var/www',
 		),
 
+		'staging' => array(
+			'host'      => 'localhost',
+			'username'  => 'username',
+			'password'  => 'password',
+			'key'       => '',
+			'keyphrase' => '',
+			'root'      => '/var/www',
+		),
 	),
 
 	/*
