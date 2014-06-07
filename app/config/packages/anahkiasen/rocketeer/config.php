@@ -19,30 +19,22 @@
 	////////////////////////////////////////////////////////////////////
 
 	// The default remote connection(s) to execute tasks on
-	'default' => array('production'),
+	'default' => array('staging'),
 
 	// The various connections you defined
 	// You can leave all of this empty or remove it entirely if you don't want
 	// to track files with credentials : Rocketeer will prompt you for your credentials
 	// and store them locally
-	'connections' => array(
-		'production' => array(
-			'host'      => 'localhost',
+	/*'connections' => array(/*
+		'staging' => array(/*
+			'host'      => 'localhost',/*
 			'username'  => 'username',
 			'password'  => 'password',
 			'key'       => '',
 			'keyphrase' => '',
 			'agent'     => '',
 		),
-		'staging' => array(
-			'host'      => 'localhost',
-			'username'  => 'username',
-			'password'  => 'password',
-			'key'       => '',
-			'keyphrase' => '',
-			'agent'     => '',
-		),
-	),
+	),*/
 
 	// Contextual options
 	//
@@ -67,6 +59,9 @@
 
 		// Connections configuration
 		'connections' => array(
+			'staging' => array(
+				'remote'   => include 'staging/remote.php',
+			),
 		),
 
 	),

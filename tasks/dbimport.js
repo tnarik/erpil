@@ -204,9 +204,11 @@ module.exports = function(grunt) {
                             'has_parking': { 'order': 16,
                                 'translate': { null: 0 } } } },
                     'sites' : {
-                        'fields': { 'name': 1, 'user_id': 0 } },
+                        'fields': { 'name': 1, 'user_id': { 'order': 0,
+                                'translate': { 1: 2 } } } },
                     'users' : {
-                        'fields': { 'id': 0, 'name': 1, 'email': 2,
+                        'fields': { 'id': { 'order': 0,
+                                'translate': { 1: 2 } }, 'name': 1, 'email': 2,
                             'password': 3} } });
             console.log('finished all this processing');
         });

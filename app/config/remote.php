@@ -1,5 +1,10 @@
 <?php
 
+# Remote connections configuration comes from enviroment private configuration
+global $app;
+$staging = $app->getEnvironmentVariablesLoader()->load('staging');
+$production = $app->getEnvironmentVariablesLoader()->load('production');
+
 return array(
 
 	/*
@@ -13,7 +18,7 @@ return array(
 	|
 	*/
 
-	'default' => 'production',
+	'default' => 'staging',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -27,23 +32,21 @@ return array(
 	*/
 
 	'connections' => array(
-
-		'production' => array(
-			'host'      => 'localhost',
-			'username'  => 'username',
-			'password'  => 'password',
-			'key'       => '',
-			'keyphrase' => '',
-			'root'      => '/var/www',
-		),
-
 		'staging' => array(
-			'host'      => 'localhost',
-			'username'  => 'username',
-			'password'  => 'password',
-			'key'       => '',
-			'keyphrase' => '',
-			'root'      => '/var/www',
+			'host'      => isset($staging['CONNECTION_HOST']) ? $staging['CONNECTION_HOST'] : "",
+			'username'  => isset($staging['CONNECTION_USERNAME']) ? $staging['CONNECTION_USERNAME'] : "",
+			'password'  => isset($staging['CONNECTION_PASSWORD']) ? $staging['CONNECTION_PASSWORD'] : "",
+			'key'       => isset($staging['CONNECTION_KEY']) ? $staging['CONNECTION_KEY'] : "",
+			'keyphrase' => isset($staging['CONNECTION_KEYPHRASE']) ? $staging['CONNECTION_KEYPHRASE'] : "",
+			'root'      => isset($staging['CONNECTION_ROOT']) ? $staging['CONNECTION_ROOT'] : "",
+		),
+		'production' => array(
+			'host'      => isset($production['CONNECTION_HOST']) ? $production['CONNECTION_HOST'] : "",
+			'username'  => isset($production['CONNECTION_USERNAME']) ? $production['CONNECTION_USERNAME'] : "",
+			'password'  => isset($production['CONNECTION_PASSWORD']) ? $production['CONNECTION_PASSWORD'] : "",
+			'key'       => isset($production['CONNECTION_KEY']) ? $production['CONNECTION_KEY'] : "",
+			'keyphrase' => isset($production['CONNECTION_KEYPHRASE']) ? $production['CONNECTION_KEYPHRASE'] : "",
+			'root'      => isset($production['CONNECTION_ROOT']) ? $production['CONNECTION_ROOT'] : "",
 		),
 	),
 
@@ -60,7 +63,7 @@ return array(
 
 	'groups' => array(
 
-		'web' => array('production')
+		'web' => array('staging')
 
 	),
 

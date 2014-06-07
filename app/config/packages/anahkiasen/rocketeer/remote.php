@@ -31,7 +31,7 @@
 	////////////////////////////////////////////////////////////////////
 
 	// The root directory where your applications will be deployed
-	'root_directory'   => '/var/www/',
+	'root_directory'   => '/home/www/',
 
 	// The folder the application will be cloned in
 	// Leave empty to use `application_name` as your folder name

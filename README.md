@@ -1,17 +1,26 @@
-## Erpil
+# Erpil
 
-Erpil is based in the [Laravel framework](http://github.com/laravel/framework).
+##Description
+
+Erpil is a web application based on the [Laravel framework](http://github.com/laravel/framework).
+
+It is lightly based in the [Simpledo UserManagement](https://github.com/XayOn/simpledo/tree/master/UserManagement) from [Simpledo](https://github.com/XayOn/simpledo) (Copyright © 2013 David Francos Cuartero <me@davidfrancos.net>) to be as compatible as possible with existing databases.
+
+A migration task is provided to import existing databases into Erpil.
+
+### Copyright
+
+Copyright © 2014 Tnarik Innael.
+
+### License
+
+GPLv3 (`LICENSE.md`)
 
 
 ## Official Documentation
 
 Documentation for the Laravel framework can be found on the [Laravel website](http://laravel.com/docs).
 
-
-
-### License
-
-TBD
 
 
 # Notes
