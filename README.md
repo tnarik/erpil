@@ -35,7 +35,7 @@ The main thing is that we are copying all libraries, instead of recreating via `
 
 Move code to the production server:
 
-- `scp` to the remove folder
+- `scp` to the remote folder
 - removed .git artefacts
 - `apt-get install php5-mcrypt`
 - `cd /var/www/app; chown -R www-data:www-data .`
@@ -55,3 +55,16 @@ Apache configuration:
 
 - `a2enmod rewrite`
 - Configure `AllowOverride All` in the Apache settings for the Laravel project.
+
+# Deployment (scripted by Rocketeer)
+- [Composer](https://getcomposer.org/) should be installed in the machine:
+
+	```
+    php -r "readfile('https://getcomposer.org/installer');" | php
+    mv composer.phar /usr/local/bin/composer
+	```
+- The required php modules should be installed in the machine:
+
+    ```
+    apt-get install php5-mcrypt php5-sqlite php5-mysql   
+    ```
