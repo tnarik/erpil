@@ -63,8 +63,11 @@ Apache configuration:
     php -r "readfile('https://getcomposer.org/installer');" | php
     mv composer.phar /usr/local/bin/composer
 	```
-- The required php modules should be installed in the machine:
+	
+- The required PHP modules should be installed in the machine:
 
     ```
     apt-get install php5-mcrypt php5-sqlite php5-mysql   
     ```
+    
+- Set the correct environment upon deployment, and configure it correctly:

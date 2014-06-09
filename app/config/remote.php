@@ -39,6 +39,7 @@ return array(
 			'key'       => isset($staging['CONNECTION_KEY']) ? $staging['CONNECTION_KEY'] : "",
 			'keyphrase' => isset($staging['CONNECTION_KEYPHRASE']) ? $staging['CONNECTION_KEYPHRASE'] : "",
 			'root'      => isset($staging['CONNECTION_ROOT']) ? $staging['CONNECTION_ROOT'] : "",
+			'deployment_root' => isset($staging['CONNECTION_DEPLOYMENT_ROOT']) ? $staging['CONNECTION_DEPLOYMENT_ROOT'] : "",
 		),
 		'production' => array(
 			'host'      => isset($production['CONNECTION_HOST']) ? $production['CONNECTION_HOST'] : "",
@@ -47,6 +48,7 @@ return array(
 			'key'       => isset($production['CONNECTION_KEY']) ? $production['CONNECTION_KEY'] : "",
 			'keyphrase' => isset($production['CONNECTION_KEYPHRASE']) ? $production['CONNECTION_KEYPHRASE'] : "",
 			'root'      => isset($production['CONNECTION_ROOT']) ? $production['CONNECTION_ROOT'] : "",
+			'deployment_root' => isset($staging['CONNECTION_DEPLOYMENT_ROOT']) ? $staging['CONNECTION_DEPLOYMENT_ROOT'] : "",
 		),
 	),
 
