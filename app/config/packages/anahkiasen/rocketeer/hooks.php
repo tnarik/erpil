@@ -27,6 +27,8 @@
 	),
 
 	// Custom Tasks to register with Rocketeer
-	'custom' => array(),
+	'custom' => array(
+		'MyTasks\Composera',
+	),
 
 );

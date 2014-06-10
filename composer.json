@@ -7,7 +7,7 @@
 		"laravel/framework": "4.1.*",
 		"codesleeve/asset-pipeline": "v2.0.3",
 		"doctrine/dbal": "v2.4.2",
-		"anahkiasen/rocketeer": "dev-master"
+		"anahkiasen/rocketeer": "dev-develop"
 	},
 	"autoload": {
 		"classmap": [
@@ -35,5 +35,11 @@
 	"config": {
 		"preferred-install": "dist"
 	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/Anahkiasen/rocketeer"
+		}
+	],
 	"minimum-stability": "stable"
 }

@@ -1,22 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "5dba35f0223a806510f48b9045c4a8af",
+    "hash": "9926f54caaca7d039049f29495901bcd",
     "packages": [
         {
             "name": "anahkiasen/rocketeer",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/rocketeer.git",
-                "reference": "b706e3986e6b5e9bf1476cd8abb1a6d1d2efb702"
+                "reference": "b4593992926871d431c9868a1a9d339ba72381df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/rocketeer/zipball/b706e3986e6b5e9bf1476cd8abb1a6d1d2efb702",
-                "reference": "b706e3986e6b5e9bf1476cd8abb1a6d1d2efb702",
+                "url": "https://api.github.com/repos/Anahkiasen/rocketeer/zipball/b4593992926871d431c9868a1a9d339ba72381df",
+                "reference": "b4593992926871d431c9868a1a9d339ba72381df",
                 "shasum": ""
             },
             "require": {
@@ -35,7 +36,8 @@
                 "mockery/mockery": "~0.9",
                 "nesbot/carbon": "~1.4",
                 "patchwork/utf8": "~1.1.18",
-                "phpseclib/phpseclib": "~0.3.5"
+                "phpseclib/phpseclib": "~0.3.5",
+                "phpunit/phpunit": "~4.0"
             },
             "suggest": {
                 "anahkiasen/rocketeer-campfire": "Campfire plugin to create deployments notifications",
@@ -58,7 +60,6 @@
                     ]
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -74,7 +75,11 @@
                 "laravel",
                 "ssh"
             ],
-            "time": "2014-06-05 20:04:06"
+            "support": {
+                "source": "https://github.com/Anahkiasen/rocketeer/tree/develop",
+                "issues": "https://github.com/Anahkiasen/rocketeer/issues"
+            },
+            "time": "2014-06-09 19:07:36"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -406,7 +411,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
