@@ -49,13 +49,14 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code) {
 	Log::error($exception);
 
-	switch ($code) {
-       	case 404:
-            return Response::view("errors.404", array(), 404);
-       	case 500:
-            return Response::view("errors.500", array(), 500);
+  if ( in_array(App::environment(), ["production"]) ) {
+  	switch ($code) {
+      case 404:
+        return Response::view("errors.404", array(), 404);
+      case 500:
+        return Response::view("errors.500", array(), 500);
     }
-
+  }
 });
 
 /*
