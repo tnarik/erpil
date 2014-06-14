@@ -1,5 +1,6 @@
 @extends('layouts.default')
 
+
 @section('content')
 <div class="col-md-12">
     <div role="main" class="col-md-4">

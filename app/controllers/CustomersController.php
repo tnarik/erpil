@@ -18,9 +18,15 @@ class CustomersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$customers = Customer::searchAndPaginate(Input::get('search'), Input::get('filter'), 15);
+		if ( Input::has('order') ) {
+			Session::put('order', Input::get('order'));
+			$direction = Session::get('direction');
+			Session::put('direction', ( $direction == 'desc' )? 'asc' : 'desc');
+		}
+
+		$customers = Customer::searchAndPaginate(Input::get('search'), Input::get('filter'), Session::get('order'), Session::get('direction'), 15);
 	   	return View::make('customers/index')->withCustomers($customers)->withDebug(Input::get('filter'))
-     		->withFilter(Input::get('filter'))->withSearch(Input::get('search'));
+     		->withFilter(Input::get('filter'))->withSearch(Input::get('search'))->withOrder(Session::get('order'))->withDirection(Session::get('direction'));
 	}
 
 
@@ -147,6 +153,8 @@ class CustomersController extends \BaseController {
 	{   
 		$customer = Customer::find($id);
 		$customer->delete();
+		Log::warning('ey');
+		Session::flash('flash_message', array( 'success' => 'Usuario borrado'));
 
 		// delete associated entries
 		// only with authorization

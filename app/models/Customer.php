@@ -45,18 +45,19 @@ class Customer extends Eloquent {
 		}
     }
 
-    public static function searchAndPaginate($search, $filter = null, $perPage = null)
+    public static function searchAndPaginate($search, $filter = null, $order = null, $direction = null, $perPage = null)
     {
     	$query = Customer::filter($filter);
 
     	if ( $search ) {
-			$query = $query->where(function($query) use ($search) {
-                	$query->where('name', 'like', "%{$search}%")->orWhere('surname', 'like', "%{$search}%");
-                });
-		}
+        $query = $query->where(function($query) use ($search) {
+            $query->where('name', 'like', "%{$search}%")->orWhere('surname', 'like', "%{$search}%");
+        });
+		  }
+      if ( $order ) {
+        $query = $query->orderBy($order, $direction);
+      }
 
-		return $query->paginate($perPage);
+		  return $query->paginate($perPage);
     }
 }
-
-//->select(DB::raw('count(*) as user_count, status'))

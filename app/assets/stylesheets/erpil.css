@@ -21,19 +21,22 @@ h6,
 
 .profile_main{
 	border:1px solid lightblue;
+	vertical-align: middle;
 	margin:2px;
 	margin-bottom:15px;
-	height:64px;
+}
+.table > tbody > tr.profile_main > td {
+	vertical-align: middle;
 }
 
 .profile_name{
 	font-size:x-large;
-	padding-top:6px;
+	padding-top:10px;
 }
 
-.profile_status{
+.profile_img_header {
+	width:64px;
 }
-
 .profile_img{
 	width:64px;
 	height:64px;

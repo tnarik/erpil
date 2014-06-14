@@ -11,6 +11,15 @@
     document.getElementById('card_id').value = "";
     alert("Tarjeta anulada correctamente. Pulse enviar para aplicar los cambios");
   }
+  function delete_user(id){
+    $.ajax({
+      url: '/customers/' + id,
+      type:'delete',
+      success:function(response){
+        window.location.replace("{{ URL::action('customers.index') }}");
+      }
+    });
+  }
 </script>
 <div class="col-md-6">
   <input type='hidden' name='card_id' id='card_id' value="{{ $customer->card_id  }}" />
@@ -63,6 +72,9 @@
   @if($current_user)
   <br/><button class="btn btn-success btn-big" onclick="assign_card(); return false"> Asociar tarjeta </button><br/>
   <button class="btn btn-success btn-big" onclick="unassign_card(); return false"> Anular tarjeta </button><br/>
+  <br/><br/><br/>
+  <button class="btn btn-success btn-big" onclick="delete_user({{ $customer->id }}); return false;"> Borrar usuario </button><br/>
+
   <br/>
   @if(isset($customer->card_id))
   <div class='alert alert-info'>Tarjeta asociada actualmente : {{ $customer->card_id }}</div>

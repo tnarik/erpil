@@ -27,8 +27,8 @@ class CreateTableCustomers extends Migration {
 			$table->text('comment')->nullable();
 			$table->text('national_id')->nullable();
 
-            $table->date('payment_last_date')->nullable();
-            $table->date('payment_next_date')->nullable();
+			$table->date('payment_last_date')->nullable();
+      $table->date('payment_next_date')->nullable();
 			$table->text('payment_method')->nullable();
 
 			$table->boolean('has_parking')->default(false);
