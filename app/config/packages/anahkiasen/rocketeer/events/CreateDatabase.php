@@ -1,14 +1,14 @@
 <?php
 
 Rocketeer::addTaskListeners('deploy', 'runComposer', function($task) {
-  $task->command->info("Creating database");
+  
 
-  Rocketeer::execute(array('CustomTasks\CreateDatabase'));
+  if ( $task->command->option("migrate") ) {
+    $task->command->info("Migrations activated: database will be created");
 
-   $currentReleasePath = $task->releasesManager->getCurrentReleasePath();
+    Rocketeer::execute(array('CustomTasks\CreateDatabase'));
 
-   $task->remote->put("app/database/seeds/ImportTableSeeder.php", $currentReleasePath.DIRECTORY_SEPARATOR."app/database/seeds/ImportTableSeeder.php");
-   $task->remote->put("app/database/seeds/DatabaseSeeder_temp.php", $currentReleasePath.DIRECTORY_SEPARATOR."app/database/seeds/DatabaseSeeder.php");
-
-  $task->command->info("Created database");
+  } else {
+    $task->command->info("Migrations deactivated");
+  }
 });
