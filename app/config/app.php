@@ -121,6 +121,7 @@ return array(
     'Illuminate\Workbench\WorkbenchServiceProvider',
     'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
     'Rocketeer\RocketeerServiceProvider',
+    'Tnarik\RocketeerDatabase\RocketeerDatabaseServiceProvider',
   ),
 
   /*

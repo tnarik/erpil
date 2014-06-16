@@ -10,4 +10,3 @@ node_modules
 
 #temporal
 app/database/*.sqlite
-

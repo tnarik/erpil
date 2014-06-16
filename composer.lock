@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9926f54caaca7d039049f29495901bcd",
+    "hash": "0da51cb1465b026f2f85827b7030588a",
     "packages": [
         {
             "name": "anahkiasen/rocketeer",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/rocketeer.git",
-                "reference": "b4593992926871d431c9868a1a9d339ba72381df"
+                "reference": "222aa3c09544640a3031cbb591f48d5706f31c9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/rocketeer/zipball/b4593992926871d431c9868a1a9d339ba72381df",
-                "reference": "b4593992926871d431c9868a1a9d339ba72381df",
+                "url": "https://api.github.com/repos/Anahkiasen/rocketeer/zipball/222aa3c09544640a3031cbb591f48d5706f31c9c",
+                "reference": "222aa3c09544640a3031cbb591f48d5706f31c9c",
                 "shasum": ""
             },
             "require": {
@@ -79,7 +79,7 @@
                 "source": "https://github.com/Anahkiasen/rocketeer/tree/develop",
                 "issues": "https://github.com/Anahkiasen/rocketeer/issues"
             },
-            "time": "2014-06-09 19:07:36"
+            "time": "2014-06-11 16:18:45"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1726,16 +1726,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.2.0",
+            "version": "v5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "043e336b871f17a117f76ef8e190eddfc04c8d48"
+                "reference": "2b9af56cc676c338d52fca4c657e5bdff73bb7af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/043e336b871f17a117f76ef8e190eddfc04c8d48",
-                "reference": "043e336b871f17a117f76ef8e190eddfc04c8d48",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/2b9af56cc676c338d52fca4c657e5bdff73bb7af",
+                "reference": "2b9af56cc676c338d52fca4c657e5bdff73bb7af",
                 "shasum": ""
             },
             "require": {
@@ -1776,7 +1776,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-05-08 08:11:19"
+            "time": "2014-06-13 11:44:54"
         },
         {
             "name": "symfony/browser-kit",
@@ -2579,11 +2579,55 @@
             "time": "2014-05-22 13:46:01"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "tnarik/rocketeer-database",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tnarik/rocketeer-database.git",
+                "reference": "389297185cdcac82163d9433aa15bb03e158595d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tnarik/rocketeer-database/zipball/389297185cdcac82163d9433aa15bb03e158595d",
+                "reference": "389297185cdcac82163d9433aa15bb03e158595d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tnarik\\RocketeerDatabase\\": "src/RocketeerDatabase/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tnarik Innael",
+                    "email": "tnarik@lecafeautomatique.co.uk"
+                }
+            ],
+            "description": "Database plugin for Rocketeer",
+            "keywords": [
+                "database",
+                "deployment",
+                "laravel",
+                "rocketeer"
+            ],
+            "time": "2014-06-16 21:31:43"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "anahkiasen/rocketeer": 20
+        "anahkiasen/rocketeer": 20,
+        "tnarik/rocketeer-database": 20
     },
     "platform": [],
     "platform-dev": []

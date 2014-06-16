@@ -2,7 +2,7 @@
 	"name": "tnarik/erpil",
 	"description": "ERPIL (based on the Laravel Framework).",
 	"keywords": ["erp"],
-	"license": "GPLv3",
+	"license": "GPL-3.0",
 	"require": {
 		"laravel/framework": "4.1.*",
 		"codesleeve/asset-pipeline": "v2.0.3",
@@ -41,5 +41,8 @@
 			"url": "https://github.com/Anahkiasen/rocketeer"
 		}
 	],
-	"minimum-stability": "stable"
+	"minimum-stability": "stable",
+	"require-dev": {
+		"tnarik/rocketeer-database": "dev-master"
+	}
 }

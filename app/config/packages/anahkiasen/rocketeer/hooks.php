@@ -27,9 +27,6 @@
 	),
 
 	// Custom Tasks to register with Rocketeer
-	'custom' => array(
-		'CustomTasks\CreateDatabase',
-		'CustomTasks\InitializeDatabase',
-	),
+	'custom' => array(),
 
 );
