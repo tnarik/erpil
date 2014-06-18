@@ -6,8 +6,7 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"codesleeve/asset-pipeline": "v2.0.3",
-		"doctrine/dbal": "v2.4.2",
-		"anahkiasen/rocketeer": "dev-develop"
+		"doctrine/dbal": "v2.4.2"
 	},
 	"autoload": {
 		"classmap": [
@@ -43,6 +42,7 @@
 	],
 	"minimum-stability": "stable",
 	"require-dev": {
+		"anahkiasen/rocketeer": "dev-develop",
 		"tnarik/rocketeer-database": "dev-master"
 	}
 }

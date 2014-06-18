@@ -17,8 +17,10 @@ Rocketeer::addTaskListeners('deploy', 'runComposer', function($task) {
 
   $connection = $task->rocketeer->getConnection();
   $currentReleasePath = $task->releasesManager->getCurrentReleasePath();
-
-  $task->remote->put(".env.${connection}.php", $currentReleasePath.DIRECTORY_SEPARATOR.".env.${connection}.php");
-
-  $task->command->info("Copied .env.${connection}.php");
+  if ( file_exists(".env.${connection}.php") ) {
+    $task->remote->put(".env.${connection}.php", $currentReleasePath.DIRECTORY_SEPARATOR.".env.${connection}.php");
+    $task->command->info("Copied .env.${connection}.php");
+  } else {
+    $task->command->error("Couldn't find .env.${connection}.php");
+  }
 });

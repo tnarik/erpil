@@ -15,4 +15,13 @@ return array(
 
 	'debug' => true,
 
+	'providers' => append_config(array(
+	  'Rocketeer\RocketeerServiceProvider',
+	  'Tnarik\RocketeerDatabase\RocketeerDatabaseServiceProvider',
+	)),
+
+	'aliases' => append_config(array(
+	  'Rocketeer' => 'Rocketeer\Facades\Rocketeer',
+	))
+
 );
