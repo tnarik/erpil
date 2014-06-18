@@ -43,6 +43,7 @@
 	"minimum-stability": "stable",
 	"require-dev": {
 		"anahkiasen/rocketeer": "dev-develop",
-		"tnarik/rocketeer-database": "dev-master"
+		"tnarik/rocketeer-database": "dev-master",
+		"tnarik/rocketeer-environment": "dev-master"
 	}
 }

@@ -18,6 +18,7 @@ return array(
 	'providers' => append_config(array(
 	  'Rocketeer\RocketeerServiceProvider',
 	  'Tnarik\RocketeerDatabase\RocketeerDatabaseServiceProvider',
+	  'Tnarik\RocketeerEnvironment\RocketeerEnvironmentServiceProvider',
 	)),
 
 	'aliases' => append_config(array(

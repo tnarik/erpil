@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "390ccd1f7e9edf0f0bdd3708566ced29",
+    "hash": "dfb52753dfa04fdb75bf5c8a6b154439",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2586,12 +2586,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tnarik/rocketeer-database.git",
-                "reference": "73252e167b9fc09a7da90a4d784d997b1b84b0d8"
+                "reference": "163ddeebcc0a8c9a7ddbb25938325a7e39a693c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tnarik/rocketeer-database/zipball/73252e167b9fc09a7da90a4d784d997b1b84b0d8",
-                "reference": "73252e167b9fc09a7da90a4d784d997b1b84b0d8",
+                "url": "https://api.github.com/repos/tnarik/rocketeer-database/zipball/163ddeebcc0a8c9a7ddbb25938325a7e39a693c4",
+                "reference": "163ddeebcc0a8c9a7ddbb25938325a7e39a693c4",
                 "shasum": ""
             },
             "require": {
@@ -2623,14 +2623,60 @@
                 "laravel",
                 "rocketeer"
             ],
-            "time": "2014-06-17 08:50:50"
+            "time": "2014-06-18 07:15:23"
+        },
+        {
+            "name": "tnarik/rocketeer-environment",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tnarik/rocketeer-environment.git",
+                "reference": "c2463fcb53210f732a74ce54585d7361ee52e15b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tnarik/rocketeer-environment/zipball/c2463fcb53210f732a74ce54585d7361ee52e15b",
+                "reference": "c2463fcb53210f732a74ce54585d7361ee52e15b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "anahkiasen/rocketeer": "This is a Rocketeer Plugin, so you better use it with Rocketeer."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tnarik\\RocketeerEnvironment\\": "src/RocketeerEnvironment/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tnarik Innael",
+                    "email": "tnarik@lecafeautomatique.co.uk"
+                }
+            ],
+            "description": "Environment plugin for Rocketeer",
+            "keywords": [
+                "deployment",
+                "environment",
+                "laravel",
+                "rocketeer"
+            ],
+            "time": "2014-06-18 07:15:03"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "anahkiasen/rocketeer": 20,
-        "tnarik/rocketeer-database": 20
+        "tnarik/rocketeer-database": 20,
+        "tnarik/rocketeer-environment": 20
     },
     "platform": [],
     "platform-dev": []
